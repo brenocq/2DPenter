@@ -2,36 +2,49 @@
 #include <iostream>
 #include <math.h>
 #include <string>
-#define SIZE 50
+#define SIZE 150
 #define ld long double
 using namespace std;
 
 ld pot(ld x, int k);
 ld mod(ld k);
 ld f(string s, ld x);
-void graph(int** a, string s, ld prop);
-void cross(int** a);
-void limpa(int** a);
-void imprime(int** a);
-int** aloca(void);
-void seta(int** a);
+void graph(bool** a, string s, ld prop);
+void cross(bool** a);
+void limpa(bool** a);
+void imprime(bool** a);
+bool** aloca(void);
+void seta(bool** a);
+void chama (bool** a);
+void desenha(float x, float y);
 
 int main(){
-	int** a;
+	bool** a;
 	string s; 
 	printf("Digite sua função.\nEla deve estar no formato de somas \"+ax^b\" (ou -\"-ax^b\"), onde a e b são naturais menores que 10.\nEx: \"+2x^2-5x^0\".\n");
 	cin >> s;
 	ld zoom;
-	printf("Agora digite um zoom. um zoom de valor 1 indica que cada pixel vale 1. Um zoom de valor 10 indica que cada pixel vale 1/10, etc.\n");
+	printf("Agora digite o valor do comprimento dos eixos.\n");
 	cin >> zoom;
-	zoom*=SIZE/2;	
+	zoom=(SIZE/2)/zoom;	
 	a = aloca();
-	seta(a);
+	seta (a);
 	cross(a);
 	graph(a, s, zoom);
 	imprime(a);
 	limpa(a);
 	return 0;
+}
+
+void chama (bool **a){
+	float i, j;
+	for (i=0; i<SIZE; i++) desenha(i, SIZE/2);
+	for (i=0; i<SIZE; i++) desenha(SIZE/2, i);
+	for (j=0; j<SIZE; j++){
+		for (i=0; i<SIZE; i++){
+			if (a[i][j]==0 && i != SIZE/2 && j != SIZE/2) desenha(i, j); 
+		}
+	}
 }
 
 ld mod(ld k){
@@ -56,7 +69,7 @@ ld f(string s, ld x){
 	return sum;
 }
 
-void graph(int** a, string s, ld prop){
+void graph(bool** a, string s, ld prop){
 	ld x;
 	ld y;
 	for (x=-(SIZE/2); x<SIZE/2; x++){
@@ -66,40 +79,44 @@ void graph(int** a, string s, ld prop){
 	return;
 }
 
-void cross(int** a){
-	int  i;
+void cross(bool** a){
+	int i;
 	for (i=0; i<SIZE; i++){
 		a[SIZE/2][i]=0;
 		a[i][SIZE/2]=0;
 	}
 }
 
-void limpa(int** a){
+void limpa(bool** a){
 	int i;
 	for (i=0; i<SIZE; i++) free(a[i]);
 	free(a);
 }
 
-void imprime(int** a){
+void imprime(bool** a){
 	int i, j;
 	for (i=0; i<SIZE; i++){
 		for (j=0; j<SIZE; j++){
-			if (a[i][j]==2) cout << " ";
+			if (a[i][j]==1) cout << " ";
 			else cout << "#";
 		}
 		cout << endl;
 	}
 }
 
-int** aloca(void){
+bool** aloca(void){
 	int i; 
-	int** a;
-	a = (int**) malloc(SIZE*(sizeof(int*)));
-	for (i=0; i<SIZE; i++) a[i] = (int*) malloc(SIZE*(sizeof(int)));
+	bool** a;
+	a = (bool**) malloc(SIZE*(sizeof(bool*)));
+	for (i=0; i<SIZE; i++) a[i] = (bool*) malloc(SIZE*(sizeof(bool)));
 	return a;
 }
 
-void seta(int** a){
+void seta(bool** a){
 	int i, j;
-	for (i=0; i<SIZE; i++) for (j=0; j<SIZE; j++) a[i][j]=2;
+	for (i=0; i<SIZE; i++) for (j=0; j<SIZE; j++) a[i][j]=1;
+}
+
+void desenha(float x, float y){
+	//se estiver vazio eh culpa do breno.
 }
