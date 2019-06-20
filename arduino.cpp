@@ -32,17 +32,18 @@ int main(){
 	cross(a);
 	graph(a, s, zoom);
 	imprime(a);
+	chama(a);
 	limpa(a);
 	return 0;
 }
 
 void chama (bool **a){
-	float i, j;
-	for (i=0; i<SIZE; i++) desenha(i, SIZE/2);
-	for (i=0; i<SIZE; i++) desenha(SIZE/2, i);
+	int i, j;
+	for (i=0; i<SIZE; i++) desenha((float)i, SIZE/2);
+	for (i=0; i<SIZE; i++) desenha(SIZE/2, (float)i);
 	for (j=0; j<SIZE; j++){
 		for (i=0; i<SIZE; i++){
-			if (a[i][j]==0 && i != SIZE/2 && j != SIZE/2) desenha(i, j); 
+			if (a[i][j]==0 && i != SIZE/2 && j != SIZE/2) desenha((float)i, (float)j); 
 		}
 	}
 }
