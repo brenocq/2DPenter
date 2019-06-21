@@ -1,4 +1,4 @@
-//Dikson e Breno
+/*Dikson e Breno
 #include <iostream>
 #include <math.h>
 #include <string>
@@ -20,13 +20,13 @@ void desenha(float x, float y);
 
 int main(){
 	bool** a;
-	string s; 
+	string s;
 	printf("Digite sua função.\nEla deve estar no formato de somas \"+ax^b\" (ou -\"-ax^b\"), onde a e b são naturais menores que 10.\nEx: \"+2x^2-5x^0\".\n");
 	cin >> s;
 	ld zoom;
 	printf("Agora digite o valor do comprimento dos eixos.\n");
 	cin >> zoom;
-	zoom=(SIZE/2)/zoom;	
+	zoom=(SIZE/2)/zoom;
 	a = aloca();
 	seta (a);
 	cross(a);
@@ -43,7 +43,7 @@ void chama (bool **a){
 	for (i=0; i<SIZE; i++) desenha(SIZE/2, (float)i);
 	for (j=0; j<SIZE; j++){
 		for (i=0; i<SIZE; i++){
-			if (a[i][j]==0 && i != SIZE/2 && j != SIZE/2) desenha((float)i, (float)j); 
+			if (a[i][j]==0 && i != SIZE/2 && j != SIZE/2) desenha((float)i, (float)j);
 		}
 	}
 }
@@ -106,7 +106,7 @@ void imprime(bool** a){
 }
 
 bool** aloca(void){
-	int i; 
+	int i;
 	bool** a;
 	a = (bool**) malloc(SIZE*(sizeof(bool*)));
 	for (i=0; i<SIZE; i++) a[i] = (bool*) malloc(SIZE*(sizeof(bool)));
@@ -119,5 +119,5 @@ void seta(bool** a){
 }
 
 void desenha(float x, float y){
-	//se estiver vazio eh culpa do breno.
-}
+	//se estiver vazio eh culpa do dikson.
+}*/
