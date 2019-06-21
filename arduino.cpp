@@ -1,7 +1,6 @@
-//Dikson e Breno
+//#XUPAFEDERAL
 #include <iostream>
 #include <math.h>
-#include <string>
 #define SIZE 150
 #define ld long double
 using namespace std;
@@ -9,6 +8,7 @@ using namespace std;
 ld pot(ld x, int k);
 ld mod(ld k);
 ld f(string s, ld x);
+int num(string s, int l, int r);
 void graph(bool** a, string s, ld prop);
 void cross(bool** a);
 void limpa(bool** a);
@@ -20,7 +20,7 @@ void desenha(float x, float y);
 
 int main(){
 	bool** a;
-	string s; 
+	string s;
 	printf("Digite sua função.\nEla deve estar no formato de somas \"+ax^b\" (ou -\"-ax^b\"), onde a e b são naturais menores que 10.\nEx: \"+2x^2-5x^0\".\n");
 	cin >> s;
 	ld zoom;
@@ -58,15 +58,72 @@ ld pot(ld x, int k){
 	else return pot(x, k-1)*x;
 }
 
-ld f(string s, ld x){
-	int l = 0;
-	ld sum = 0, act;
-	while (s[l]!='\0') {
-		act = (ld)(s[l+1]-'0')*pot(x, s[l+4]-'0');
-		if (s[l]=='+') sum+=act;
-		else sum-=act;
-		l+=5;
+int num(string s, int l, int r){
+	int a = 0, i;
+	for (i=l; i<r; i++){
+		a*=10;
+		a+=s[i]-'0';
 	}
+	return a;
+}
+
+ld f(string s, ld x){
+	ld sum = 0;
+	int a[100], i, l, r, m, coef, exp, flag = 0;
+	string aux;
+	for (i=0; i<100; i++) a[i]=0;
+	if (s[0]!='+' && s[0]!='-') {
+		aux="+"+s;
+		s=aux;
+	}
+	l=r=0;
+	while(s[l]!='\0'){
+		flag = 0;
+
+		if (s[l+1]=='x') {
+			coef = 1;
+			m = l+1; //m indica a posição do x
+
+		}
+		else {
+			for (i=l+1; i<=s.size(); i++){
+				if (s[i]=='x'){
+					coef = num(s, l+1, i); //função num retorna o numero contido entre a substring s[l+1, i]
+					m = i; 
+					break;
+				}
+				if (s[i]=='\0' || s[i]=='+' || s[i]=='-'){
+					if (s[l]=='+') a[0] += num(s, l+1, i);
+					else a[0] -= num(s, l+1, i); 
+					flag = 1;
+					r = i;
+					l = r;
+					break;
+				}
+			}
+		}
+
+		if (flag) continue;
+		
+		if (s[m+1]!='^') {
+			exp = 1;
+			r = m+1;
+		}
+		else {
+			for (i=m+2; i<=s.size(); i++){
+				if (s[i]=='+' || s[i]=='-' || s[i]=='\0'){
+					exp = num(s, m+2, i);
+					r = i;
+					break;
+				}
+			}
+		}
+		if (s[l]=='+') a[exp] += coef;
+		else a[exp] -= coef;
+		l = r;
+	}
+
+	for (i=0; i<100; i++) sum += a[i]*pot(x, i);
 	return sum;
 }
 
