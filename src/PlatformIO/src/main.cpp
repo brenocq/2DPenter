@@ -1,42 +1,35 @@
-/*#include <Arduino.h>
+#include <Arduino.h>
+#include "penterSoftware.h"
 
-const int stepPin = 23;
-const int dirPin = 22;
-
+PenterSoftware penter;
+const int motorStep[3] = {22,3,19};
+const int motorDir[3] = {23,1,21};
 void setup() {
-  pinMode(stepPin,OUTPUT);
-pinMode(dirPin,OUTPUT);
+  Serial.begin(115200);
+  penter.begin();
 }
 
 void loop() {
-  digitalWrite(dirPin,HIGH); // Enables the motor to move in a particular direction
-    // Makes 200 pulses for making one full cycle rotation
-    for(int x = 0; x < 3200; x++) {
-      digitalWrite(stepPin,HIGH);
-      delayMicroseconds(100);
-      digitalWrite(stepPin,LOW);
-      delayMicroseconds(100);
-    }
-    delay(1000); // One second delay
-
-    digitalWrite(dirPin,LOW); //Changes the rotations direction
-    // Makes 400 pulses for making two full cycle rotation
-    for(int x = 0; x < 3200; x++) {
-      digitalWrite(stepPin,HIGH);
-      delayMicroseconds(100);
-      digitalWrite(stepPin,LOW);
-      delayMicroseconds(100);
-    }
-    delay(1000);
+  penter.moveAxes(0, -10);
+  delay(1000);
+  penter.moveAxes(0, -10);
+  delay(1000);
+  /*penter.penPoint();
+  penter.moveAxes(1, 1);
+  penter.penPoint();
+  penter.moveAxes(1, 1);
+  penter.penPoint();
+  penter.moveAxes(4, 0);
+  delay(1000);*/
 }
-*/
+
 
 /*********
   Rui Santos
   Complete project details at https://randomnerdtutorials.com
 *********/
 
-// Load Wi-Fi library
+/*// Load Wi-Fi library
 #include <WiFi.h>
 
 // Replace with your network credentials
@@ -152,7 +145,7 @@ void loop(){
             client.println("      width: 50%%;");
             client.println("    }");
             client.println("");
-            client.println("    /* Clear floats after the columns */");
+            client.println("    /* Clear floats after the columns ");
             client.println("    .row:after {");
             client.println("      content: \"\";");
             client.println("      display: table;");
@@ -207,7 +200,7 @@ void loop(){
             client.println("  </div>");
             client.println("</body>");
             client.println("</html>");
-            client.println();
+            client.println();*/
 
             /*// Display the HTML web page
             client.println("<!DOCTYPE html><html>");
@@ -251,7 +244,7 @@ void loop(){
             client.println("</body></html>");
 
             // The HTTP response ends with another blank line
-            client.println();*/
+            client.println();
             // Break out of the while loop
             break;
           } else { // if you got a newline, then clear currentLine
@@ -269,4 +262,4 @@ void loop(){
     Serial.println("Client disconnected.");
     Serial.println("");
   }
-}
+}*/

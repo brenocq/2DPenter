@@ -1,5 +1,5 @@
 //#XUPAFEDERAL
-#include <iostream>
+/*#include <iostream>
 #include <math.h>
 #define SIZE 150
 #define ld long double
@@ -26,7 +26,7 @@ int main(){
 	ld zoom;
 	printf("Agora digite o valor do comprimento dos eixos.\n");
 	cin >> zoom;
-	zoom=(SIZE/2)/zoom;	
+	zoom=(SIZE/2)/zoom;
 	a = aloca();
 	seta (a);
 	cross(a);
@@ -43,7 +43,7 @@ void chama (bool **a){
 	for (i=0; i<SIZE; i++) desenha(SIZE/2, (float)i);
 	for (j=0; j<SIZE; j++){
 		for (i=0; i<SIZE; i++){
-			if (a[i][j]==0 && i != SIZE/2 && j != SIZE/2) desenha((float)i, (float)j); 
+			if (a[i][j]==0 && i != SIZE/2 && j != SIZE/2) desenha((float)i, (float)j);
 		}
 	}
 }
@@ -89,12 +89,12 @@ ld f(string s, ld x){
 			for (i=l+1; i<=s.size(); i++){
 				if (s[i]=='x'){
 					coef = num(s, l+1, i); //função num retorna o numero contido entre a substring s[l+1, i]
-					m = i; 
+					m = i;
 					break;
 				}
 				if (s[i]=='\0' || s[i]=='+' || s[i]=='-'){
 					if (s[l]=='+') a[0] += num(s, l+1, i);
-					else a[0] -= num(s, l+1, i); 
+					else a[0] -= num(s, l+1, i);
 					flag = 1;
 					r = i;
 					l = r;
@@ -104,7 +104,7 @@ ld f(string s, ld x){
 		}
 
 		if (flag) continue;
-		
+
 		if (s[m+1]!='^') {
 			exp = 1;
 			r = m+1;
@@ -163,7 +163,7 @@ void imprime(bool** a){
 }
 
 bool** aloca(void){
-	int i; 
+	int i;
 	bool** a;
 	a = (bool**) malloc(SIZE*(sizeof(bool*)));
 	for (i=0; i<SIZE; i++) a[i] = (bool*) malloc(SIZE*(sizeof(bool)));
@@ -176,5 +176,6 @@ void seta(bool** a){
 }
 
 void desenha(float x, float y){
-	//se estiver vazio eh culpa do breno.
+	//se estiver vazio eh culpa do dikson.
 }
+*/
