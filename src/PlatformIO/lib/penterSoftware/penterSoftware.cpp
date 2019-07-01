@@ -21,13 +21,7 @@ void PenterSoftware::begin(){
 
 void PenterSoftware::moveHome(){
     // Home X axis
-    digitalWrite(motorDir[motorX],HIGH);// Move 1cm positive
-    for(int i = 0; i < abs(int(10*Kx)); i++) {
-      digitalWrite(motorStep[motorX],HIGH);
-      delayMicroseconds(200);
-      digitalWrite(motorStep[motorX],LOW);
-      delayMicroseconds(200);
-    }
+    moveAxes(10,0);// Move 1cm positive
     digitalWrite(motorDir[motorX],LOW);// Move negative until endstop
     while(digitalRead(stopX)!=0){
       digitalWrite(motorStep[motorX],HIGH);
@@ -52,13 +46,7 @@ void PenterSoftware::moveHome(){
     currX=0;
 
     // Home Y axis
-    digitalWrite(motorDir[motorY],HIGH);// Move 1cm positive
-    for(int i = 0; i < abs(int(10*Ky)); i++) {
-      digitalWrite(motorStep[motorY],HIGH);
-      delayMicroseconds(200);
-      digitalWrite(motorStep[motorY],LOW);
-      delayMicroseconds(200);
-    }
+    moveAxes(0,10);// Move 1cm positive
     digitalWrite(motorDir[motorY],LOW);// Move negative until endstop
     while(digitalRead(stopY)!=0){
       digitalWrite(motorStep[motorY],HIGH);
@@ -84,9 +72,11 @@ void PenterSoftware::moveHome(){
 }
 
 void PenterSoftware::moveAxes(float XMillimeters,float YMillimeters){
-  //Serial.print(XMillimeters);Serial.print(" ");Serial.print(Kx);Serial.print(" ");Serial.print(XMillimeters*Kx);Serial.print(" ");Serial.print(int(XMillimeters*Kx));
+    Serial.print("CurrX:");Serial.print(currX);Serial.print(" Xmili:");Serial.print(XMillimeters);Serial.print("\t");
+    Serial.print("CurrY:");Serial.print(currY);Serial.print(" Ymili:");Serial.print(YMillimeters);Serial.println("\t");
     if(currX+XMillimeters>maxX){
       XMillimeters = maxX-currX;
+      Serial.print("NewXmili:");Serial.println(XMillimeters);
     }
     if(XMillimeters>=0){
       digitalWrite(motorDir[motorX],HIGH);// Changes the rotation direction
@@ -109,6 +99,7 @@ void PenterSoftware::moveAxes(float XMillimeters,float YMillimeters){
     currX+=XMillimeters;
     if(currY+YMillimeters>maxY){
       YMillimeters = maxY-currY;
+            Serial.print("NewYmili:");Serial.println(YMillimeters);
     }
     if(YMillimeters>=0){
       digitalWrite(motorDir[motorY],HIGH);// Changes the rotation direction
@@ -121,7 +112,7 @@ void PenterSoftware::moveAxes(float XMillimeters,float YMillimeters){
       }
     }else{
       digitalWrite(motorDir[motorY],LOW);// Changes the rotation direction
-      for(int i = 0; i < -int((XMillimeters*Ky)); i++) {
+      for(int i = 0; i < -int((YMillimeters*Ky)); i++) {
         digitalWrite(motorStep[motorY],HIGH);
         delayMicroseconds(300);
         digitalWrite(motorStep[motorY],LOW);
@@ -129,6 +120,7 @@ void PenterSoftware::moveAxes(float XMillimeters,float YMillimeters){
       }
     }
     currY+=YMillimeters;
+    Serial.println();
 }
 
 void PenterSoftware::penPoint(){
@@ -149,6 +141,7 @@ void PenterSoftware::penPoint(){
 }
 
 void PenterSoftware::gotoPosition(float x, float y){
+  Serial.print("Go to (");Serial.print(x);Serial.print(",");Serial.print(y);Serial.println("):");
   float deltaX = x-currX;
   float deltaY = y-currY;
   moveAxes(deltaX,deltaY);

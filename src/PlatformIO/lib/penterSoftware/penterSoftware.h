@@ -14,13 +14,13 @@ public:
   void gotoPosition(float x, float y);// Go to a coordinate
   void point(float x, float y);// Go to the coordinate and make a point
 private:
-  float maxX = 150;
-  float maxY = 100;
+  float maxX = 70;
+  float maxY = 130;
   float currX = 0;
   float currY = 0;
-  const int motorStep[3] = {22,19,3};// penMotor, Xmotor, Ymotor
-  const int motorDir[3] = {23,21,1};// penMotor, Xmotor, Ymotor
-  const int stopButton[2] = {19,20};// X and Y
+  const int motorStep[3] = {22,19,5};// penMotor, Xmotor, Ymotor
+  const int motorDir[3] = {23,21,18};// penMotor, Xmotor, Ymotor
+  const int stopButton[2] = {2,4};// X and Y
   float Kx=120;
   float Ky=100;
   enum motorName{
@@ -29,8 +29,8 @@ private:
     motorY = 2
   };
   enum stopButtonName{
-    stopX = 0,
-    stopY = 1
+    stopX = 2,
+    stopY = 4
   };
 };
 #endif// PENTERSOFTWARE_H
