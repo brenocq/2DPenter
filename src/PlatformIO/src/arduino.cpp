@@ -1,5 +1,5 @@
-//#XUPAFEDERAL
-/*#include <iostream>
+/*#XUPAFEDERAL
+#include <iostream>
 #include <math.h>
 #define SIZE 150
 #define ld long double
@@ -178,4 +178,5 @@ void seta(bool** a){
 void desenha(float x, float y){
 	//se estiver vazio eh culpa do dikson.
 }
+
 */

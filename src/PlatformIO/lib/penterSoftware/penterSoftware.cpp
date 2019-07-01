@@ -78,6 +78,9 @@ void PenterSoftware::moveAxes(float XMillimeters,float YMillimeters){
       XMillimeters = maxX-currX;
       Serial.print("NewXmili:");Serial.println(XMillimeters);
     }
+    if(currX+XMillimeters<0){
+      XMillimeters=0;
+    }
     if(XMillimeters>=0){
       digitalWrite(motorDir[motorX],HIGH);// Changes the rotation direction
       for(int i = 0; i < abs(int(XMillimeters*Kx)); i++) {
@@ -100,6 +103,9 @@ void PenterSoftware::moveAxes(float XMillimeters,float YMillimeters){
     if(currY+YMillimeters>maxY){
       YMillimeters = maxY-currY;
             Serial.print("NewYmili:");Serial.println(YMillimeters);
+    }
+    if(currY+YMillimeters<0){
+      YMillimeters=0;
     }
     if(YMillimeters>=0){
       digitalWrite(motorDir[motorY],HIGH);// Changes the rotation direction

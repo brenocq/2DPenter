@@ -41,15 +41,9 @@
 
   </style>
   <!-- Script JavaScript -->
-  <script>
-  function showDiv() {
-    if(document.getElementById('welcomeDiv').style.display == "none"){
-      document.getElementById('welcomeDiv').style.display = "block";
-    }else{
-      document.getElementById('welcomeDiv').style.display = "none";
-    }
 
-  }
+  <script>
+
   </script>
 </head>
 <body>
@@ -67,13 +61,28 @@
     <div class="move">
       <h2>MOVE</h2>
       <div class="row">
-        <div class="column">
-          <center><a href="/home"><button class="button">Home</button></a></center>
-        </div>
-        <div class="column">
-          <div id="welcomeDiv"  style="display:none;" class="answer_list" > BATATA</div>
-          <input type="button" name="answer" value="Show Div" onclick="showDiv()" />
-        </div>
+          <h3>Home</h3>
+            <a href="/home"><img src="http://www.newdesignfile.com/postpic/2010/03/home-icon-white_338306.png" height="150" /></a>
+          <center>
+             <h3>Move axes( 1mm )</h3>
+             <h5>Click the center to make a point on the paper</h5>
+             <img src="https://image.flaticon.com/icons/svg/60/60931.svg" alt = "arrows" usemap = "#arrowMap" height="200">
+           </center>
+           <map name = "arrowMap">
+             <area shape = "rect" coords = "50,0,150,60" alt = "up arrow"
+               href = "/Ypositive" target = "_blank" />
+             <area shape = "rect" coords = "50,140,150,200" alt = "down arrow"
+                href = "/Ynegative" target = "_blank" />
+             <area shape = "rect" coords = "140,50,200,150" alt = "right arrow"
+               href = "/Xpositive" target = "_blank" />
+             <area shape = "rect" coords = "0,50,60,150" alt = "left arrow"
+               href = "/Xnegative" target = "_blank" />
+             <area shape = "rect" coords = "60,60,140,140" alt = "central"
+               href = "/Point" target = "_blank" />
+           </map>
+           <input type="button" value="0.1mm" onclick="window.location.href = '/001';"/>
+           <input type="button" value="1mm"   onclick="window.location.href = '/010';"/>
+           <input type="button" value="10mm"   onclick="window.location.href = '/100';"/>
       </div>
     </div>
 
@@ -81,7 +90,11 @@
 
     <div class="plotFunc">
       <h2>PLOT YOUR FUNCTION</h2>
-      <h3>Exemple: 2x^3+x^2+5</h3>
+      <h3>Exemple: xe3-2xe2+1</h3>
+      <div>
+         <input type = "text" id = "inputText"></input>
+         <button onClick="javascript: window.open('/Plot' + document.getElementById('inputText').value);" id = "sendButton">PLOT!</button>
+      </div>
     </div>
 
   </div>
