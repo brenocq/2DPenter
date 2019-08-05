@@ -28,8 +28,8 @@ All 3d modeled parts are available in the `3Dmodels` folder. First, open the `2D
 
 #### Pen structure
 <p align="center">
- <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/Car1.PNG" height="200">
- <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/Car2.PNG" height="200">
+ <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/Car1.PNG" height="300">
+ <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/Car2.PNG" height="300">
 </p>
 
 A Nema8 stepper motor was used to move the pen up and down.
@@ -64,7 +64,7 @@ The only thing you need to do now is type this address on your browser and the w
 
 #### Website
 <p align="center">
-  <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/2dPenterWebsite.png" height="200">
+  <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/2dPenterWebsite.png" height="400">
 </p>
 On this website there are some basic commands you can do with the 2D Penter.
 
