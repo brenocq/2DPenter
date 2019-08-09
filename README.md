@@ -3,6 +3,7 @@ _by Breno Queiroz and Dikson Ferreira_
 
 <p align="center">
  <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/IsometricView2.PNG" height="200">
+ <img src="https://raw.githubusercontent.com/Brenocq/2DPenter/master/Images/RealFrontRight.jpg" height="200">
  <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/IsometricView1.PNG" height="200">
 </p>
 
@@ -63,6 +64,7 @@ Now the 2D Penter will automatically connect to the WIFI and show its address on
 The only thing you need to do now is type this address on your browser and the website will appear.
 
 #### Website
+
 <p align="center">
   <img src="https://github.com/Brenocq/2DPenter/blob/master/Images/2dPenterWebsite.png" height="400">
 </p>
@@ -74,11 +76,16 @@ Just below this there are arrow where you can **move the axes**. You can set the
 
 The last command is to **draw a polynomial functions**. After clicking `PLOT!` the printer will move home and begin drawing the function at the range (-2,2) on the X and Y axes.
 
-
 ## Results
-In the images below, we show some of the functions drawn by 2D Penter.
 
-TODO
+<p align="center">
+ <img src="https://raw.githubusercontent.com/Brenocq/2DPenter/master/Images/Result1.jpg" height="200"/>
+ <img src="https://raw.githubusercontent.com/Brenocq/2DPenter/master/Images/Result2.jpg" height="200"/>
+ <img src="https://raw.githubusercontent.com/Brenocq/2DPenter/master/Images/Result3.jpg" height="200"/>
+</p>
+In the images above, we show some of the functions drawn by 2D Penter (the last one was rotated).
+
+**Click [here](https://www.youtube.com/watch?v=S_lHMZDLUfM) to see the Youtube video.**
 
 ## Future Work
 - Drawing the PCB wires in a copper plate to create circuits
